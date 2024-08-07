@@ -30,4 +30,4 @@ jobs:
       - name: Publish docs for given tag
         if: github.event.inputs.tagName != ''
         #run: mkdocs gh-deploy
-        run: mike deploy --push ${{ github.event.inputs.tagName }}
+        run: mike deploy --push ${{ github.event.inputs.tagName }} --allow-empty
