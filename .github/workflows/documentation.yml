@@ -19,5 +19,5 @@ jobs:
       - name: Publish docs
         #run: mkdocs gh-deploy
         run: |
-            mike deploy ${{ env.version }}
-            mike set-default ${{ env.version }} --push 
+            mike deploy --push --update-aliases ${{ env.version }} latest
+            mike set-default ${{ env.version }}
