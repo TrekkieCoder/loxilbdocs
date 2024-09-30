@@ -2462,7 +2462,7 @@
   --with-oidc \
   --managed
 </code></pre></div>
-After running the above, we will have an EKS clsuter with two nodes named "multi-az-eks".</p>
+After running the above, we will have an EKS cluster with two nodes named "multi-az-eks".</p>
 <h3 id="configuring-loxilb-ec2-instances">Configuring LoxiLB EC2 Instances</h3>
 <h4 id="create-loxilb-subnet">Create LoxiLB subnet</h4>
 <p>After configuring EKS, it's time to configure the LoxiLB instance. Let's create the subnet that each of the LoxiLB instances will use.</p>
@@ -2478,7 +2478,7 @@ After running the above, we will have an EKS clsuter with two nodes named "multi
 <p><img alt="image" src="https://github.com/loxilb-io/loxilbdocs/assets/111065900/6ad5fa46-63e6-4ea0-a974-81606a62a842" /></p>
 <h4 id="loxilb-iam-settings">LoxiLB IAM Settings</h4>
 <p>LoxiLB instances require permission to access the AWS EC2 API to associate ElasticIPs and create secondary interfaces and subnets.</p>
-<p>We will create a role with the following IAM policy for LoxiLB EC2 instances.</p>
+<p>We will create a role with the following IAM policy for LoxiLB EC2 instances in AWS <code>IAM-&gt;Policies-&gt;Create policy</code> dashboard , select JSON mode and paste the following:</p>
 <div class="highlight"><pre><span></span><code>{
     &quot;Version&quot;: &quot;2012-10-17&quot;,
     &quot;Statement&quot;: [
@@ -2490,8 +2490,9 @@ After running the above, we will have an EKS clsuter with two nodes named "multi
     ]
 }
 </code></pre></div>
+<p>After this one can create  a new IAM role using this policy in AWS dashboard : Roles-&gt;Create role-&gt;Use policy.</p>
 <h4 id="loxilb-ec2-instance-creation">LoxiLB EC2 instance creation</h4>
-<p>We will create two LoxiLB instances for this example and connect the instances with subnets A and B created above.</p>
+<p>We will create two LoxiLB EC2 instances with appropriate EMI (preferably Ubuntu 20.04 or 22.04).  For this example we have to connect the instances with subnets A and B created above. While creating the instances, one we need to edit the "Network Settings" and "Advanced Detail Settings" as illustrated below:</p>
 <p><img alt="image" src="https://github.com/loxilb-io/loxilbdocs/assets/111065900/732c6b66-33b3-4927-8864-abf03377042b" /></p>
 <p>And specify to use the IAM role created above in the IAM instance profile of the Advanced details settings.</p>
 <p><img alt="image" src="https://github.com/loxilb-io/loxilbdocs/assets/111065900/bdbfa17d-69ea-4eba-9fec-ae6481f6c971" /></p>
@@ -2540,7 +2541,7 @@ After running the above, we will have an EKS clsuter with two nodes named "multi
   -dit \
   -v /dev/log:/dev/log -e AWS_REGION=ap-northeast-3 \
   --name loxilb \
-  ghcr.io/loxilb-io/loxilb:aws-support \
+  ghcr.io/loxilb-io/loxilb:main \
   --cloud=aws --cloudcidrblock=192.168.248.0/24 --cluster=192.168.228.108 --self=0
 </code></pre></div>
 <ul>
@@ -2556,7 +2557,7 @@ After running the above, we will have an EKS clsuter with two nodes named "multi
   -dit \
   -v /dev/log:/dev/log -e AWS_REGION=ap-northeast-3 \
   --name loxilb \
-  ghcr.io/loxilb-io/loxilb:aws-support \
+  ghcr.io/loxilb-io/loxilb:main \
   --cloud=aws --cloudcidrblock=192.168.248.0/24 --cluster=192.168.218.60 --self=1
 </code></pre></div>
 <p>For each instance, HA status can be checked as follows:</p>
@@ -2597,7 +2598,7 @@ spec:
       ports:
         - containerPort: 80
 </code></pre></div>
-After creating an nginx service with the above,  weu can see that the ElasticIP has been designated as the externalIP of the service.</p>
+After creating an nginx service with the above,  we can see that the ElasticIP has been designated as the externalIP of the service.</p>
 <p><div class="highlight"><pre><span></span><code>LEIS6N3:~/workspace/aws-demo$ kubectl apply -f nginx.yaml
 service/nginx-lb1 created
 pod/nginx-test created
