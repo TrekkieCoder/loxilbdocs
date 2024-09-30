@@ -2441,13 +2441,13 @@
 <p>The HA configuration described in the above <a href="https://docs.aws.amazon.com/whitepapers/latest/real-time-communication-on-aws/floating-ip-pattern-for-ha-between-activestandby-stateful-servers.html">document</a> has certain limitations. It could only be configured within a single Availability-Zone(AZ). The HA instances need to share the VIP of the same subnet in order to provide a single access point to users, but this configuration was so far not possible in a multi-AZ environment. This blog explains how to deploy LoxiLB in a multi-AZ environment and configure HA.</p>
 <h3 id="overall-scenario">Overall Scenario</h3>
 <p>Two LoxiLB instances - loxilb1 and loxilb2 will be deployed in different AZs. These two loxilbs form a HA pair and operate in active-backup roles.</p>
-<p>The active loxilb1 instance is additionally assigned a secondary network interface called loxi-eni. The loxi-eni network interface has a private IP (192.168.248.254 in this setup) which is used as a secondary IP.</p>
-<p>loxilb1 associates this <em>192.168.248.254</em> secondary IP with an user-specified public ElasticIP address. When a user accesses the EKS service externally using an ElasticIP address, this traffic is NATed to the 192.168.248.254 IP and delivered to the active loxilb instance. The active loxilb instance can then load balance the traffic to the appropriate endpoint in EKS.</p>
-<p><img alt="image" src="https://github.com/loxilb-io/loxilbdocs/assets/111065900/40ce1e2a-06a0-4e80-9ce7-22491cd3b547" /></p>
+<p>The active loxilb1 instance is additionally assigned a secondary network interface called loxi-eni. The loxi-eni network interface has a private IP (124.124.124.250 in this setup) which is used as a secondary IP.</p>
+<p>loxilb1 associates this <em>124.124.124.250</em> secondary IP with an user-specified public ElasticIP address. When a user accesses the EKS service externally using an ElasticIP address, this traffic is NATed to the 124.124.124.250 IP and delivered to the active loxilb instance. The active loxilb instance can then load balance the traffic to the appropriate endpoint in EKS.</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/8e046fe6-fa14-4d0c-9d32-d437d1eee9c4" /></p>
 <p>If loxilb1 goes down due to any reason, the status of loxilb2, which was backup previously, changes to active.</p>
-<p>During this transition, loxilb2 instance is assigned a new loxil-eni secondary network interface, and the 192.168.248.254 IP used by the the original master "loxilb1" is set to the secondary network interface of loxilb2.</p>
-<p>The ElasticIP used by the user is also (re)associated to the 192.168.248.254 private IP address of the "new" active instance. This makes it possible to maintain active sessions even during failover or situations where there is a need to upgrade orginal master instance etc.</p>
-<p><img alt="image" src="https://github.com/loxilb-io/loxilbdocs/assets/111065900/c6b5e454-1830-4c67-b2f5-ccb7895fa93d" /></p>
+<p>During this transition, loxilb2 instance is assigned a new loxil-eni secondary network interface, and the 124.124.124.250 IP used by the the original master "loxilb1" is set to the secondary network interface of loxilb2.</p>
+<p>The ElasticIP used by the user is also (re)associated to the 124.124.124.250 private IP address of the "new" active instance. This makes it possible to maintain active sessions even during failover or situations where there is a need to upgrade orginal master instance etc.</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/38b1a421-5587-41c4-8df6-ce934f515863" /></p>
 <p>To summarize, when a failover occurs the public ElasticIP address is always associated to the active LoxiLB instance, so users who were previously accessing EKS using the same ElasticIP address can continue to do so without being affected by any node failure or other issues.</p>
 <h3 id="an-example-scenario">An example scenario</h3>
 <p>We will use eksctl to create an EKS cluster. To use eksctl, we need to register authentication information through AWS CLI. Instructions for installing aws CLI &amp; eksctl etc are omitted in this document and can be found in AWS.</p>
@@ -2462,7 +2462,7 @@
   --with-oidc \
   --managed
 </code></pre></div>
-After running the above, we will have an EKS cluster with two nodes named "multi-az-eks".</p>
+After running the above, we will have an EKS cluster with two nodes named "multi-az-eks". Note: Please edit the instance security to allow traffic to and from loxilb instances for the created EKS nodes as necessary.</p>
 <h3 id="configuring-loxilb-ec2-instances">Configuring LoxiLB EC2 Instances</h3>
 <h4 id="create-loxilb-subnet">Create LoxiLB subnet</h4>
 <p>After configuring EKS, it's time to configure the LoxiLB instance. Let's create the subnet that each of the LoxiLB instances will use.</p>
@@ -2524,7 +2524,7 @@ After running the above, we will have an EKS cluster with two nodes named "multi
 <ul>
 <li>Modify loxiURL with the IPs of the LoxiLB EC2instances created above.</li>
 <li>For externalCIDR, specify the Elastic IP created above.</li>
-<li>PrivateCIDR specifies the VIP that will be associated with the Elastic IP. As described in the scenario above, we will use 192.168.248.254 as the VIP in this article. The IP must be set within the range of the VPC CIDR and not currently part of any another subnet.</li>
+<li>PrivateCIDR specifies the VIP that will be associated with the Elastic IP. As described in the scenario above, we will use 124.124.124.250 as the VIP in this article. The IP must be set within the range of the VPC CIDR and not currently part of any another subnet.</li>
 </ul>
 <h4 id="run-loxilb-pods">Run LoxiLB Pods</h4>
 <h5 id="install-docker-on-loxilb-instances">Install docker on LoxiLB instance(s)</h5>
@@ -2575,6 +2575,8 @@ root@ip-192-168-228-108:/#
 kind: Service
 metadata:
   name: nginx-lb1
+  annotations:
+    loxilb.io/lbmode: &quot;fullnat&quot;
 spec:
   externalTrafficPolicy: Local
   loadBalancerClass: loxilb.io/loxilb
