@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://loxilb-io.github.io/loxilbdocs/main/nat/">
+        <link rel="canonical" href="https://loxilb-io.github.io/loxilbdocs/main/kube-loxilb-url-crds/">
       
       
-        <link rel="prev" href="../loxilbebpf/">
-      
-      
-        <link rel="next" href="../lb-algo/">
       
       
       <link rel="icon" href="../photos/loxilb-logo.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>NAT Modes of loxilb - LoxiLB</title>
+        <title>Kube loxilb url crds - LoxiLB</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nat-modes-in-loxilb" class="md-skip">
+        <a href="#kube-loxilb-dynamic-configuration-with-kubernetes-crd" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NAT Modes of loxilb
+              Kube loxilb url crds
             
           </span>
         </div>
@@ -1286,10 +1282,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -1332,11 +1326,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1350,7 +1344,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Knowledge Base
@@ -1466,28 +1460,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    NAT Modes of loxilb
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../nat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1496,86 +1472,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#nat-modes-in-loxilb" class="md-nav__link">
-    <span class="md-ellipsis">
-      NAT modes in loxilb
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="NAT modes in loxilb">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-normal-nat" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Normal NAT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-one-arm" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. One-ARM
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-full-nat" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Full-NAT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-l2-dsr-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. L2-DSR mode
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-l3-dsr-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. L3-DSR mode
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2326,55 +2222,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#nat-modes-in-loxilb" class="md-nav__link">
+  <a href="#kube-loxilb-dynamic-configuration-with-kubernetes-crd" class="md-nav__link">
     <span class="md-ellipsis">
-      NAT modes in loxilb
+      kube-loxilb dynamic configuration with Kubernetes CRD
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="NAT modes in loxilb">
+    <nav class="md-nav" aria-label="kube-loxilb dynamic configuration with Kubernetes CRD">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-normal-nat" class="md-nav__link">
+  <a href="#prerequisite" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Normal NAT
+      Prerequisite
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-one-arm" class="md-nav__link">
+  <a href="#createupdatedelete-loxilb-url-when-running-in-external-mode" class="md-nav__link">
     <span class="md-ellipsis">
-      2. One-ARM
+      Create/Update/Delete loxilb URL when running in external mode
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-full-nat" class="md-nav__link">
+  <a href="#createupdatedelete-ipam-pool-definitions-to-use-with-services" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Full-NAT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-l2-dsr-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. L2-DSR mode
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-l3-dsr-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. L3-DSR mode
+      Create/Update/Delete IPAM Pool definitions to use with services
     </span>
   </a>
   
@@ -2403,26 +2281,86 @@
   
 
 
-  <h1>NAT Modes of loxilb</h1>
+  <h1>Kube loxilb url crds</h1>
 
-<h2 id="nat-modes-in-loxilb">NAT modes in loxilb</h2>
-<p>loxilb implements a variety of NAT modes to achieve load-balancing for different scenarios as far as L4 load-balancing is concerned. These NAT modes have subtle differences and this guide will shed light on these details</p>
-<h3 id="1-normal-nat">1. Normal NAT</h3>
-<p>This is basic NAT mode used by loxilb. In this mode, loxilb employs simple DNAT for incoming requests i.e destination IP (which is also the service IP) is changed to the chosen end-point IP. For the outgoing responses it does the exactly opposite(SNAT). Since loxilb relies on statefulness for this mode, it is necessary that return packets also traverse through loxilb. The following figure illustrates this operation -</p>
-<p><img alt="normal nat" src="../photos/dnat1.png" /></p>
-<p>In this mode, original source IP is preserved till the end-point and provides best visibility for anyone needing it. Finally, this also means the end-points should know how to reach the source.</p>
-<h3 id="2-one-arm">2. One-ARM</h3>
-<p>Traditionally one-arm NAT mode meant that the LB node used to have a single arm (or connection) to the LAN instead of separate ingress and egress networks. loxilb's one-arm NAT mode is a little extended version of the traditional one-arm mode. In one-arm mode, loxilb chooses its LAN IP as source-IP when sending incoming requests towards end-points nodes. Even if the originating source is not on the same LAN, this is loxilb's default behaviour for one arm mode.</p>
-<p><img alt="normal nat" src="../photos/onearm.png" /></p>
-<h3 id="3-full-nat">3. Full-NAT</h3>
-<p>In the full-NAT mode, loxilb replaces the source-IP of an incoming request to a special instance IP. This instance IP is associated with each instance in a cluster deployment and maintained internally by loxilb. In this mode, various instances of loxilb cluster will have unique instance IPs and each of them will be advertised by BGP towards the end-point to set the return PATH accordingly. This helps in optimal distribution and spread of traffic in case an active-active clustering mode is desired.</p>
-<p><img alt="normal nat" src="../photos/fullnat.png" /></p>
-<h3 id="4-l2-dsr-mode">4. L2-DSR mode</h3>
-<p>In L2-DSR (direct server return) mode, loxilb performs load-balancing operation but without changing any IP addresses. It just updates the layer2 header as per selected end-point. Also in DSR mode, loxilb does not need statefulness and end-point can choose a different return path not involving loxilb. This maybe advantageous for certain scenarios where there is a need to reduce load in LB nodes by allowing return traffic to bypass the LB.</p>
-<p><img alt="l2dsr" src="../photos/l2dsr.png" /></p>
-<h3 id="5-l3-dsr-mode">5. L3-DSR mode</h3>
-<p>In L3-DSR (direct server return) mode, loxilb performs load-balancing operation but encapsulates the original payload with an IPinIP tunnel towards the end-points. Also like L2-DSR mode, loxilb does not need statefulness and end-point can choose a different/direct return path not involving loxilb.</p>
-<p><img alt="l3dsr" src="../photos/l3dsr.png" /></p>
+<h2 id="kube-loxilb-dynamic-configuration-with-kubernetes-crd">kube-loxilb dynamic configuration with Kubernetes CRD</h2>
+<p>By default, kube-loxilb's operation is controller by its initial manifest file. But it might be also necessary to configure some of its options without stopping kube-loxilb. This is supported using config CRDs exposed by kube-loxilb. Currently the following configuration can be added/updated/deleted using such CRDS:</p>
+<ul>
+<li>Create/Update/Delete loxilb URL when running in external mode</li>
+<li>Create/Update/Delete IPAM Pool definitions to use with services</li>
+</ul>
+<h3 id="prerequisite">Prerequisite</h3>
+<p>As a first step, we need to add the necessary CRD definitions in Kubernetes:</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f https://raw.githubusercontent.com/loxilb-io/kube-loxilb/refs/heads/main/manifest/crds/loxilb-url-crd.yaml
+</code></pre></div>
+<h3 id="createupdatedelete-loxilb-url-when-running-in-external-mode">Create/Update/Delete loxilb URL when running in external mode</h3>
+<p>To add a loxilb instance to the kube-loxilb, we can use the following yaml file (save as loxiurl1.yaml) :</p>
+<p><div class="highlight"><pre><span></span><code>apiVersion: &quot;loxiurl.loxilb.io/v1&quot;
+kind: LoxiURL
+metadata:
+  name: llb-10.10.10.1
+spec:
+  loxiURL: http://10.10.10.1:11111
+  zone: llb
+  type: default
+</code></pre></div>
+Apply to add :
+<div class="highlight"><pre><span></span><code>kubectl apply -f loxiurl1.yaml
+</code></pre></div>
+The above will add loxilb instance running in external mode reachable at http://10.10.10.1:11111 to this kube-loxilb. We can use both http or https.</p>
+<p>To check, we can use :
+<div class="highlight"><pre><span></span><code>kubectl get loxiurl
+NAME             AGE
+llb-10.10.10.1   5h21m
+</code></pre></div>
+After this, kube-loxilb will pair with respective loxilb instance as mentioned.</p>
+<h3 id="createupdatedelete-ipam-pool-definitions-to-use-with-services">Create/Update/Delete IPAM Pool definitions to use with services</h3>
+<p>To add a new IPAM CIDR pool to the kube-loxilb, we can use the following yaml file (save as loxipool1.yaml) :</p>
+<div class="highlight"><pre><span></span><code>apiVersion: &quot;loxiurl.loxilb.io/v1&quot;
+kind: LoxiURL
+metadata:
+  name: pool5
+spec:
+  loxiURL: 12.12.12.0/24
+  zone: llb
+  type: cidrpool
+</code></pre></div>
+<p>Apply to add :
+<div class="highlight"><pre><span></span><code>kubectl apply -f loxipool1.yaml
+</code></pre></div>
+When creating a Kubernetes service, we can then select this IPAM pool for external address allocation to this service :</p>
+<div class="highlight"><pre><span></span><code>apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-lb1
+  annotations:
+    loxilb.io/poolSelect: pool5
+spec:
+  externalTrafficPolicy: Local
+  loadBalancerClass: loxilb.io/loxilb
+  selector:
+    what: nginx-test
+  ports:
+    - port: 80
+      targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-test
+  labels:
+    what: nginx-test
+spec:
+  nodeSelector:
+    node: wlznode02
+  containers:
+    - name: nginx-test
+      image: nginx
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 80
+</code></pre></div>
 
 
 
@@ -2453,44 +2391,6 @@
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../loxilbebpf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: eBPF internals">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                eBPF internals
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../lb-algo/" class="md-footer__link md-footer__link--next" aria-label="Next: loxilb load-balancer algorithms">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                loxilb load-balancer algorithms
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">

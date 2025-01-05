@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://loxilb-io.github.io/loxilbdocs/main/nat/">
+        <link rel="canonical" href="https://loxilb-io.github.io/loxilbdocs/main/service-sharding/">
       
       
-        <link rel="prev" href="../loxilbebpf/">
+        <link rel="prev" href="../k3k-virtual-cluster/">
       
       
-        <link rel="next" href="../lb-algo/">
+        <link rel="next" href="../gw-api/">
       
       
       <link rel="icon" href="../photos/loxilb-logo.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>NAT Modes of loxilb - LoxiLB</title>
+        <title>How-To - Kubernetes service sharding with loxilb - LoxiLB</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nat-modes-in-loxilb" class="md-skip">
+        <a href="#kubernetes-service-sharding-with-loxilb" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NAT Modes of loxilb
+              How-To - Kubernetes service sharding with loxilb
             
           </span>
         </div>
@@ -989,8 +989,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1019,11 +1021,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -1037,7 +1039,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Advanced Guides
@@ -1216,10 +1218,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../service-sharding/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    How-To - Kubernetes service sharding with loxilb
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1228,6 +1248,134 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetes-service-sharding-with-loxilb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes service sharding with loxilb
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-deploy-service-sharding" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to deploy service sharding ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to deploy service sharding ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-loxilb-in-cluster-daemonset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy loxilb in-cluster daemonset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-kube-loxilb-with-appropriate-args" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy kube-loxilb with appropriate args
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-service-without-specifying-any-sharding-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create service without specifying any sharding instance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-service-by-specifying-sharding-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create service by specifying sharding instance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1286,10 +1434,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -1332,11 +1478,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1350,7 +1496,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Knowledge Base
@@ -1466,28 +1612,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    NAT Modes of loxilb
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../nat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1496,86 +1624,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#nat-modes-in-loxilb" class="md-nav__link">
-    <span class="md-ellipsis">
-      NAT modes in loxilb
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="NAT modes in loxilb">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-normal-nat" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Normal NAT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-one-arm" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. One-ARM
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-full-nat" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Full-NAT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-l2-dsr-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. L2-DSR mode
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-l3-dsr-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. L3-DSR mode
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2326,57 +2374,105 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#nat-modes-in-loxilb" class="md-nav__link">
+  <a href="#kubernetes-service-sharding-with-loxilb" class="md-nav__link">
     <span class="md-ellipsis">
-      NAT modes in loxilb
+      Kubernetes service sharding with loxilb
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="NAT modes in loxilb">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-deploy-service-sharding" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to deploy service sharding ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to deploy service sharding ?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-normal-nat" class="md-nav__link">
+  <a href="#deploy-loxilb-in-cluster-daemonset" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Normal NAT
+      Deploy loxilb in-cluster daemonset
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-one-arm" class="md-nav__link">
+  <a href="#deploy-kube-loxilb-with-appropriate-args" class="md-nav__link">
     <span class="md-ellipsis">
-      2. One-ARM
+      Deploy kube-loxilb with appropriate args
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-full-nat" class="md-nav__link">
+  <a href="#creating-services" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Full-NAT
+      Creating services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-service-without-specifying-any-sharding-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create service without specifying any sharding instance
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-l2-dsr-mode" class="md-nav__link">
+  <a href="#create-service-by-specifying-sharding-instance" class="md-nav__link">
     <span class="md-ellipsis">
-      4. L2-DSR mode
+      Create service by specifying sharding instance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service 1
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-l3-dsr-mode" class="md-nav__link">
+  <a href="#service-2" class="md-nav__link">
     <span class="md-ellipsis">
-      5. L3-DSR mode
+      Service 2
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2403,26 +2499,224 @@
   
 
 
-  <h1>NAT Modes of loxilb</h1>
+  <h1>How-To - Kubernetes service sharding with loxilb</h1>
 
-<h2 id="nat-modes-in-loxilb">NAT modes in loxilb</h2>
-<p>loxilb implements a variety of NAT modes to achieve load-balancing for different scenarios as far as L4 load-balancing is concerned. These NAT modes have subtle differences and this guide will shed light on these details</p>
-<h3 id="1-normal-nat">1. Normal NAT</h3>
-<p>This is basic NAT mode used by loxilb. In this mode, loxilb employs simple DNAT for incoming requests i.e destination IP (which is also the service IP) is changed to the chosen end-point IP. For the outgoing responses it does the exactly opposite(SNAT). Since loxilb relies on statefulness for this mode, it is necessary that return packets also traverse through loxilb. The following figure illustrates this operation -</p>
-<p><img alt="normal nat" src="../photos/dnat1.png" /></p>
-<p>In this mode, original source IP is preserved till the end-point and provides best visibility for anyone needing it. Finally, this also means the end-points should know how to reach the source.</p>
-<h3 id="2-one-arm">2. One-ARM</h3>
-<p>Traditionally one-arm NAT mode meant that the LB node used to have a single arm (or connection) to the LAN instead of separate ingress and egress networks. loxilb's one-arm NAT mode is a little extended version of the traditional one-arm mode. In one-arm mode, loxilb chooses its LAN IP as source-IP when sending incoming requests towards end-points nodes. Even if the originating source is not on the same LAN, this is loxilb's default behaviour for one arm mode.</p>
-<p><img alt="normal nat" src="../photos/onearm.png" /></p>
-<h3 id="3-full-nat">3. Full-NAT</h3>
-<p>In the full-NAT mode, loxilb replaces the source-IP of an incoming request to a special instance IP. This instance IP is associated with each instance in a cluster deployment and maintained internally by loxilb. In this mode, various instances of loxilb cluster will have unique instance IPs and each of them will be advertised by BGP towards the end-point to set the return PATH accordingly. This helps in optimal distribution and spread of traffic in case an active-active clustering mode is desired.</p>
-<p><img alt="normal nat" src="../photos/fullnat.png" /></p>
-<h3 id="4-l2-dsr-mode">4. L2-DSR mode</h3>
-<p>In L2-DSR (direct server return) mode, loxilb performs load-balancing operation but without changing any IP addresses. It just updates the layer2 header as per selected end-point. Also in DSR mode, loxilb does not need statefulness and end-point can choose a different return path not involving loxilb. This maybe advantageous for certain scenarios where there is a need to reduce load in LB nodes by allowing return traffic to bypass the LB.</p>
-<p><img alt="l2dsr" src="../photos/l2dsr.png" /></p>
-<h3 id="5-l3-dsr-mode">5. L3-DSR mode</h3>
-<p>In L3-DSR (direct server return) mode, loxilb performs load-balancing operation but encapsulates the original payload with an IPinIP tunnel towards the end-points. Also like L2-DSR mode, loxilb does not need statefulness and end-point can choose a different/direct return path not involving loxilb.</p>
-<p><img alt="l3dsr" src="../photos/l3dsr.png" /></p>
+<h2 id="kubernetes-service-sharding-with-loxilb">Kubernetes service sharding with loxilb</h2>
+<p>This guide elaborates on how to shard Kubernetes services for efficient resource utilization and to maximize cluster performance. In the flat L2 networking (active-backup) <a href="https://docs.loxilb.io/latest/ha-deploy/">HA</a> mode of loxilb, usually, one pod in a deployment is selected as the active pod. Thereafter, whenever services are created, the respective external VIP allocated is always associated with this master pod. When this master pod, or the node hosting it, fails, another master pod is selected, and all VIPs are then migrated to this new master pod.</p>
+<p>This scheme works perfectly fine; however, if multiple loxilb pods are active, the backup pods usually don’t perform any functions, resulting in resource under-utilization. With service sharding, kube-loxilb (loxilb's operator) can effectively shard the services in an automated way across the available loxilb pods to maximize utilization.</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/2e61af4c-2a92-472b-9bbf-d60942a67695" /></p>
+<p>If any loxilb pod fails, the services associated with that particular pod are rebalanced to other available active pods without any traffic disruption.</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/0272e923-3cde-44b0-be16-1c1c7ac7c92c" /></p>
+<h2 id="how-to-deploy-service-sharding">How to deploy service sharding ?</h2>
+<p>In this example, we will have a Kubernetes cluster with 3 master nodes and 2 worker nodes. </p>
+<div class="highlight"><pre><span></span><code>$ kubectl get nodes -A
+NAME      STATUS   ROLES                       AGE     VERSION
+master1   Ready    control-plane,etcd,master   6h29m   v1.30.5+k3s1
+master2   Ready    control-plane,etcd,master   6h23m   v1.30.5+k3s1
+master3   Ready    control-plane,etcd,master   6h21m   v1.30.5+k3s1
+worker1   Ready    &lt;none&gt;                      6h13m   v1.30.5+k3s1
+worker2   Ready    &lt;none&gt;                      6h12m   v1.30.5+k3s1
+</code></pre></div>
+<h3 id="deploy-loxilb-in-cluster-daemonset">Deploy loxilb in-cluster daemonset</h3>
+<div class="highlight"><pre><span></span><code>kubectl apply -f https://raw.githubusercontent.com/loxilb-io/kube-loxilb/refs/heads/main/manifest/in-cluster/loxilb.yaml
+</code></pre></div>
+<h3 id="deploy-kube-loxilb-with-appropriate-args">Deploy kube-loxilb with appropriate args</h3>
+<p>Get the kube-loxilb manifest file :
+<div class="highlight"><pre><span></span><code>wget https://github.com/loxilb-io/kube-loxilb/raw/main/manifest/in-cluster/kube-loxilb-nobgp.yaml
+</code></pre></div>
+Change the args in this file : 
+<div class="highlight"><pre><span></span><code>        args:               
+        - --cidrPools=defaultPool=192.168.80.250/24                   
+        - --setRoles=0.0.0.0
+        - --setUniqueIP
+        - --numZoneInstances=3
+</code></pre></div>
+The argument <code>--setUniqueIP</code> is necessary to enable service sharding. This arg makes sure that each service gets an unique externalIP from IPAM. This external IP will be then associated across the different active loxilb in-cluster pods.</p>
+<p>The argument <code>--numZoneInstances</code> should be set to the max. number of instances of loxilb deployment. In this example, we schedule loxilb pods in all the three master nodes so this argument is set to 3. Please note that we can schedule loxilb Daemonset in any nodes as necessary. Please check loxilb yaml manifest in the previous step.</p>
+<p>Now, we can deploy kube-loxilb :</p>
+<div class="highlight"><pre><span></span><code>$ kubectl apply -f kube-loxilb-nobgp.yaml 
+serviceaccount/kube-loxilb created
+clusterrole.rbac.authorization.k8s.io/kube-loxilb created
+clusterrolebinding.rbac.authorization.k8s.io/kube-loxilb created
+deployment.apps/kube-loxilb created
+</code></pre></div>
+<p>Let's recap all the resources created so far:</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods -A
+NAMESPACE     NAME                                      READY   STATUS    RESTARTS   AGE
+kube-system   coredns-7b98449c4-n895r                   1/1     Running   0          7h6m
+kube-system   kube-loxilb-95c8758b-gblq7                1/1     Running   0          51s
+kube-system   local-path-provisioner-6795b5f9d8-zftg8   1/1     Running   0          7h6m
+kube-system   loxilb-lb-ktq55                           1/1     Running   0          24m
+kube-system   loxilb-lb-n5zfk                           1/1     Running   0          24m
+kube-system   loxilb-lb-vp25b                           1/1     Running   0          24m
+kube-system   metrics-server-cdcc87586-kk2st            1/1     Running   0          7h6m
+</code></pre></div>
+<p>We can quick check the HA sharding instances created by kube-loxilb :</p>
+<p><div class="highlight"><pre><span></span><code>$ kubectl exec -it -n kube-system loxilb-lb-ktq55 -- loxicmd get ha
+| INSTANCE  | HASTATE |
+|-----------|---------|
+| default   | BACKUP  |
+| llb-inst1 | BACKUP  |
+| llb-inst2 | MASTER  |
+$ kubectl exec -it -n kube-system loxilb-lb-vp25b -- loxicmd get ha
+| INSTANCE  | HASTATE |
+|-----------|---------|
+| llb-inst1 | MASTER  |
+| llb-inst2 | BACKUP  |
+| default   | BACKUP  |
+$ kubectl exec -it -n kube-system loxilb-lb-n5zfk -- loxicmd get ha
+| INSTANCE  | HASTATE |
+|-----------|---------|
+| llb-inst2 | BACKUP  |
+| llb-inst1 | BACKUP  |
+| default   | MASTER  |
+</code></pre></div>
+Hence, it creates three instances "default", "llb-inst1" and "llb-inst2"  and assigns a separate master instance for each.</p>
+<h3 id="creating-services">Creating services</h3>
+<p>We can create LoadBalancer services as usual. Here, kube-loxilb will choose a sharding instance by itself for the service. If an user needs to place the service in a specific service instance, they can do so with help of loxilb annotation as explained afterwards.</p>
+<h4 id="create-service-without-specifying-any-sharding-instance">Create service without specifying any sharding instance</h4>
+<p><div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF | sudo kubectl apply -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: tcp-lb
+  annotations:
+    loxilb.io/lbmode: &quot;onearm&quot;
+spec:
+  externalTrafficPolicy: Local
+  loadBalancerClass: loxilb.io/loxilb
+  selector:
+    what: tcp-test
+  ports:
+    - port: 57002
+      targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tcp-test
+  labels:
+    what: tcp-test
+spec:
+  containers:
+    - name: tcp-test
+      image: ghcr.io/loxilb-io/nginx:stable
+      ports:
+        - containerPort: 80
+EOF
+</code></pre></div>
+Check the created service :</p>
+<p><div class="highlight"><pre><span></span><code>$ kubectl get svc
+NAME         TYPE           CLUSTER-IP      EXTERNAL-IP          PORT(S)           AGE
+kubernetes   ClusterIP      10.43.0.1       &lt;none&gt;               443/TCP           7h17m
+tcp-lb       LoadBalancer   10.43.184.236   llb-192.168.80.250   57002:31819/TCP   27s
+</code></pre></div>
+To figure out the exact instance selected, we need to check in each loxilb instance (no easy way out right now). </p>
+<p><div class="highlight"><pre><span></span><code>sudo kubectl exec -it -n kube-system loxilb-lb-n5zfk -- loxicmd get ip | grep 192.168.80.250
+|             | 192.168.80.250/32 |
+</code></pre></div>
+In this case, kube-loxilb chooses the "default" shard and assigns the respective VIP to the current master loxilb pod for "default" shard. </p>
+<h4 id="create-service-by-specifying-sharding-instance">Create service by specifying sharding instance</h4>
+<div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF | sudo kubectl apply -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: tcp-lb2
+  annotations:
+    loxilb.io/lbmode: &quot;onearm&quot;
+    loxilb.io/zoneinstance: &quot;llb-inst2&quot;
+spec:
+  externalTrafficPolicy: Local
+  loadBalancerClass: loxilb.io/loxilb
+  selector:
+    what: tcp-test2
+  ports:
+    - port: 57002
+      targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tcp-test2
+  labels:
+    what: tcp-test2
+spec:
+  containers:
+    - name: tcp-test2
+      image: ghcr.io/loxilb-io/nginx:stable
+      ports:
+        - containerPort: 80
+EOF
+</code></pre></div>
+<p>Here we are explicitly specifying <code>loxilb.io/zoneinstance: "llb-inst2"</code> to choose an instance. The created services are as follows :
+<div class="highlight"><pre><span></span><code>$ kubectl get svc
+NAME         TYPE           CLUSTER-IP      EXTERNAL-IP          PORT(S)           AGE
+kubernetes   ClusterIP      10.43.0.1       &lt;none&gt;               443/TCP           7h25m
+tcp-lb       LoadBalancer   10.43.184.236   llb-192.168.80.250   57002:31819/TCP   8m7s
+tcp-lb2      LoadBalancer   10.43.240.78    llb-192.168.80.251   57002:30253/TCP   10s
+</code></pre></div>
+As per our earlier observation, the pod <code>loxilb-lb-ktq55</code> is the master of the instance <code>llb-inst2</code>. So, we can check whether VIP has been associated with it or not :</p>
+<div class="highlight"><pre><span></span><code>sudo kubectl exec -it -n kube-system loxilb-lb-ktq55 -- loxicmd get ip | grep 192.168.80.251
+|             | 192.168.80.251/32 |
+</code></pre></div>
+<p>We can also double confirm that these VIPs are associated with only one loxilb pod at a time. </p>
+<h3 id="test">Test</h3>
+<p>Let's do a quick test to check both these services are accessible from outside the cluster :</p>
+<h4 id="service-1">Service 1</h4>
+<div class="highlight"><pre><span></span><code>curl http://192.168.80.250:57002
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+<h4 id="service-2">Service 2</h4>
+<p><div class="highlight"><pre><span></span><code>curl http://192.168.80.251:57002
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+Curious readers can further analyze where each service traffic is heading with tools like tcpdump and left as an exercise !</p>
 
 
 
@@ -2458,7 +2752,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../loxilbebpf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: eBPF internals">
+          <a href="../k3k-virtual-cluster/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How-To - Kubernetes virtual cluster setup with k3k and loxilb">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2468,20 +2762,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                eBPF internals
+                How-To - Kubernetes virtual cluster setup with k3k and loxilb
               </div>
             </div>
           </a>
         
         
           
-          <a href="../lb-algo/" class="md-footer__link md-footer__link--next" aria-label="Next: loxilb load-balancer algorithms">
+          <a href="../gw-api/" class="md-footer__link md-footer__link--next" aria-label="Next: How-To - loxilb L4/L7 policies with Kubernetes gateway API">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                loxilb load-balancer algorithms
+                How-To - loxilb L4/L7 policies with Kubernetes gateway API
               </div>
             </div>
             <div class="md-footer__button md-icon">
